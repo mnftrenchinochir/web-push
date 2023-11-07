@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET(_: NextRequest) {
   const subscriptions = await getSubscriptionsFromDb()
-
+console.log(">>>>>>> subscriptions >>>>>", subscriptions)
   subscriptions.forEach((s) => {
     const payload = JSON.stringify({
       title: 'WebPush Notification!',

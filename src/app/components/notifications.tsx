@@ -42,6 +42,18 @@ export default function Notifications() {
       <button onClick={requestPermission} className={styles.button}>
         Request permission and subscribe
       </button>
+      <button onClick={()=>{
+        const ORIGIN = window.location.origin
+        const BACKEND_URL = `${ORIGIN}/api/push`
+        return fetch(BACKEND_URL, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }).then(console.log)
+      }} className={styles.button}>
+        Send notification
+      </button>
       <Link href="/debug">Debug options</Link>
     </>
   )
@@ -50,7 +62,7 @@ export default function Notifications() {
 const saveSubscription = async (subscription: PushSubscription) => {
   const ORIGIN = window.location.origin
   const BACKEND_URL = `${ORIGIN}/api/push`
-
+console.log(">>>>>>> subscription >>>>>", subscription)
   const response = await fetch(BACKEND_URL, {
     method: 'POST',
     headers: {
