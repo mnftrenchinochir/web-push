@@ -1,6 +1,7 @@
 'use client'
 
 import { useState , useEffect} from 'react'
+import Link from 'next/link'
 import { CONFIG } from '@/config'
 import { resetServiceWorker } from '@/utils/sw/service-worker'
 import styles from '../page.module.css'
@@ -15,6 +16,7 @@ export default function Notifications() {
   const [permission, setPermission] = useState(
     window?.Notification?.permission || 'default'
   )
+
 
   useEffect(()=>{
     requestPermission()
@@ -36,7 +38,9 @@ export default function Notifications() {
   return (
     <>
       <Notice message={`Notifications permission status: ${permission}`} />
-
+      <button onClick={requestPermission} className={styles.button}>
+        Request permission and subscribe
+      </button>
       <button onClick={()=>{
         const ORIGIN = window.location.origin
         const BACKEND_URL = `${ORIGIN}/api/push`
@@ -49,6 +53,7 @@ export default function Notifications() {
       }} className={styles.button}>
         Send notification
       </button>
+      <Link href="/debug">Debug options</Link>
     </>
   )
 }
