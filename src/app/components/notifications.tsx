@@ -16,13 +16,6 @@ export default function Notifications() {
     window?.Notification?.permission || 'default'
   )
 
-  if (!notificationsSupported()) {
-    return (
-      <Notice message="Please install this app on your home screen first!" />
-    )
-  }
-
-
   useEffect(()=>{
     requestPermission()
   },[])
