@@ -38,5 +38,6 @@ console.log(">>>>>>> subscriptions >>>>>", subscriptions)
 
   return NextResponse.json({
     message: `${subscriptions.length} messages sent!`,
+    subscriptions,
   })
 }

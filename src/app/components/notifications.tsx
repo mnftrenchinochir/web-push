@@ -45,7 +45,7 @@ export default function Notifications() {
           headers: {
             'Content-Type': 'application/json',
           },
-        }).then(alert)
+        }).then(console.log)
       }} className={styles.button}>
         Send notification
       </button>
